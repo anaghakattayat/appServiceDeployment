@@ -8,10 +8,11 @@ jobs:
       # Checkout code
     - uses: actions/checkout@main
 
-      # Log into Azure using Open ID connect
-    - uses: azure/login@v1
+    # Authenticate to Az CLI using OIDC
+    - name: 'Az CLI login'
+      uses: azure/login@v1
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
 
       # Deploy Bicep file
     - name: deploy
