@@ -4,12 +4,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+
       # Checkout code
-    - name : Checkout
-      uses: actions/checkout@main
+    - uses: actions/checkout@main
 
       # Log into Azure using Open ID connect
-    - name: 'AZ CLI login'
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
