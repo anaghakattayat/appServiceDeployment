@@ -1,17 +1,16 @@
 on: [push]
 name: Azure ARM
-
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest
     steps:
-    # Checkout code
-    - name: 'Checkout5'
+      # Checkout code
+    - name : Checkout
       uses: actions/checkout@main
 
       # Log into Azure using Open ID connect
-    - name: 'Az CLI Login'
-      uses: azure/login@v1
+    - name: 'AZ CLI login'
+    - uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
