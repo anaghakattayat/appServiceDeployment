@@ -12,7 +12,7 @@ env:
 jobs:
   build-and-deploy:
     name: 'build-and-deploy'
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     # Checkout the repository to the GitHub Actions runner
