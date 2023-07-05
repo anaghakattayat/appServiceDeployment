@@ -1,29 +1,3 @@
-Skip to content
-anaghakattayat
-/
-appServiceDeployment
-
-Type / to search
-Command palette
-Create new...
-Issues
-Pull requests
-You have unread notifications
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-.github/workflows/appService.yml
-Update appService.yml #26
-Jobs
-Run details
-Workflow file for this run
-.github/workflows/appService.yml at a1d420c
 on:
   push:
     branches:
