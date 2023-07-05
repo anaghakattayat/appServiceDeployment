@@ -7,7 +7,7 @@ param location string
 param resourceParam object
 
 // Resource Group
-module rg 'modules/Resources/resource-groups/main.bicep' = {
+module rg '/modules/Resources/resource-groups/main.bicep' = {
   name: '${deployment().name}-rg'
   params: {
     name: resourceParam.AppRgName
