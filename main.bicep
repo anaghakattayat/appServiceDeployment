@@ -30,7 +30,7 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
 
 
 //App service plan
-module serverfarms 'modules/web/serverfarms/main.bicep' = {
+module serverfarms 'module/web/serverfarms/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName)
   name: resourceParam.planName
   params: {
@@ -45,7 +45,7 @@ module serverfarms 'modules/web/serverfarms/main.bicep' = {
 }
 
 //App service 
-module sites 'modules/web/sites/main.bicep'= {
+module sites 'module/web/sites/main.bicep'= {
    scope: resourceGroup(resourceParam.AppRgName) 
    name : resourceParam.webAppName
    params: {
