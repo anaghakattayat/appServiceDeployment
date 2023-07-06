@@ -61,7 +61,7 @@ module slots 'module/web/sites/slots/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName) 
   name:  resourceParam.slotWebAppName
   params: {
-    appName: resourceParam.slotWebAppName
+    appName: resourceParam.webAppName
     kind: 'app'
     name: resourceParam.slotWebAppName
     location: location
