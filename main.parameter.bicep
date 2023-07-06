@@ -5,11 +5,13 @@ param AppRgName string = 'RGAmeth'
 param sku string = 'S1'
 param planName string = 'ameth-appServicePlan'
 param webAppName string = 'ameth-webApp'
+param virtualNetwork string = 'Ameth-virtual-network'
 
 var resourceParam = {
   AppRgName: AppRgName
   planName: planName
   webAppName: webAppName
+  virtualNetwork: virtualNetwork
   sku: sku
   tags: {
     testtag: 'testtag1'
