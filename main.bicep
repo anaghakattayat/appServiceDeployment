@@ -57,7 +57,7 @@ module sites 'module/web/sites/main.bicep'= {
 }
 
 // slot
-module slots 'modules/web/sites/slots/main.bicep' = {
+module slots 'module/web/sites/slots/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName) 
   name:  resourceParam.slotWebAppName
   params: {
