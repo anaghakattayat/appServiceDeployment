@@ -33,7 +33,6 @@ jobs:
           pwd
           cd /home/runner/work/appServiceDeployment/
           pwd
-          for %%f in ( "$(appServiceDeployment)\*" ) do @echo %%f
           az bicep build --file ./main.bicep
         
     # Validate whether a template is valid at subscription scope
