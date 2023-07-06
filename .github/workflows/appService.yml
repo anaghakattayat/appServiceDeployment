@@ -31,7 +31,7 @@ jobs:
       with:
         inlineScript: |
           pwd
-          cd /home/runner/work/appServiceDeployment
+          cd /home/runner/work/appServiceDeployment/blob/4d9c79e85742871ebae97068e2f464b893290f1f
           pwd
           az bicep build --file main.bicep
         
