@@ -27,3 +27,31 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
     addressPrefixes:['10.7.0.0/16']
   }
 }
+
+
+//App service plan
+module serverfarms 'modules/web/serverfarms/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName)
+  name: resourceParam.planName
+  params: {
+    location: location
+    name: resourceParam.planName
+    tags: resourceParam.tags
+    sku: resourceParam.sku
+  // dependsOn: [
+  //   rg.outputs.name
+  // ]
+}
+}
+
+//App service 
+module sites 'modules/web/sites/main.bicep'= {
+   scope: resourceGroup(resourceParam.AppRgName) 
+   name : resourceParam.webAppName
+   params: {
+    location: location
+    name: resourceParam.webAppName
+    serverFarmResourceId: serverfarms.outputs.resourceId
+    kind: 'StorageV2'
+   }
+}
