@@ -40,8 +40,7 @@ jobs:
         inlineScript: |
           az deployment sub validate \
             --name validate-${{ github.run_id }} \
-            --template-file main.bicep \
-            --parameters main.parameter.bicep \
+            --template-file main.parameter.bicep \
             --location $LOCATION     
 
     # Preview changes
