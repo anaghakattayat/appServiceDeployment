@@ -8,6 +8,7 @@ param webAppName string = 'ameth-webApp'
 param virtualNetwork string = 'Ameth-virtual-network'
 param sku object = {
   name: 'Standard_LRS'
+  tier: 'Standard'
 }
 
 var resourceParam = {
