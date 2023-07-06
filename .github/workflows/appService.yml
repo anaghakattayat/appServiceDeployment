@@ -50,7 +50,7 @@ jobs:
         inlineScript: |
           az deployment sub what-if \
             --name whatif-${{ github.run_id }} \
-            --template-file main.bicep \
+            --template-file main.parameter.bicep \
             --location $LOCATION > whatif
             
       # Create string output of Whatif
@@ -120,6 +120,6 @@ jobs:
         inlineScript: |
           az deployment sub create \
             --name deploy-${{ github.run_id }} \
-            --template-file main.bicep \
+            --template-file main.parameter.bicep \
             --location $LOCATION 
             
