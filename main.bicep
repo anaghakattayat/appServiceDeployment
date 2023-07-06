@@ -55,3 +55,15 @@ module sites 'module/web/sites/main.bicep'= {
     kind: 'app'
    }
 }
+
+// slot
+module slots 'modules/web/sites/slots/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name:  resourceParam.slotWebAppName
+  params: {
+    appName: resourceParam.slotWebAppName
+    kind: 'app'
+    name: resourceParam.slotWebAppName
+    location: resourceParam.location
+  }
+}
