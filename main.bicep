@@ -17,7 +17,7 @@ module rg './module/resources/resource-groups/main.bicep' = {
 }
 
 // Virtual-network
-module virtualnetwork 'modules/network/virtual-networks/main.bicep' = {
+module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName)
   name: resourceParam.virtualNetwork
   params: {
