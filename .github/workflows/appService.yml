@@ -31,9 +31,9 @@ jobs:
       with:
         inlineScript: |
           pwd
-          cd /home/runner/work/appServiceDeployment/
+          cd /home/runner/work/appServiceDeployment
           pwd
-          az bicep build --file ./main.bicep
+          az bicep build --file main.bicep
         
     # Validate whether a template is valid at subscription scope
     - name: Bicep Validate
