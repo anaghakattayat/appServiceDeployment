@@ -6,8 +6,6 @@ param sku string = 'S1'
 param planName string = 'ameth-appServicePlan'
 param webAppName string = 'ameth-webApp'
 param virtualNetwork string = 'Ameth-virtual-network'
-param planName string = 'ameth-appServicePlan'
-param webAppName string = 'ameth-webApp'
 
 var resourceParam = {
   AppRgName: AppRgName
