@@ -52,6 +52,6 @@ module sites 'module/web/sites/main.bicep'= {
     location: location
     name: resourceParam.webAppName
     serverFarmResourceId: serverfarms.outputs.resourceId
-    kind: 'StorageV2'
+    kind: 'app'
    }
 }
