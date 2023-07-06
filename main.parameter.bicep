@@ -1,12 +1,12 @@
 targetScope = 'subscription'
 @description('Optional. Specifies the location for resources.')
 param location string ='westus3'
-param AppRgName string = 'RGAmeth'
+param AppRgName string = 'RGAmeth-1'
 //param sku string = 'S1'
-param planName string = 'ameth-appServicePlan'
-param webAppName string = 'ameth-webApp'
-param virtualNetwork string = 'Ameth-virtual-network'
-param slotWebAppName string = 'slot-WebAppName'
+param planName string = 'ameth-appServicePlan-1'
+param webAppName string = 'ameth-webApp-1'
+param virtualNetwork string = 'Ameth-virtual-network-1'
+param slotWebAppName string = 'slot-WebAppName-1'
 param sku object = {
   name: 'S1'
   tier: 'S1'
