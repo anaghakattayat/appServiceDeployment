@@ -2,7 +2,7 @@ targetScope = 'subscription'
 @description('Optional. Specifies the location for resources.')
 param location string ='westus3'
 param AppRgName string = 'RGAmeth'
-param sku string = 'F1'
+param sku string = 'S1'
 param planName string = 'ameth-appServicePlan'
 param webAppName string = 'ameth-webApp'
 
