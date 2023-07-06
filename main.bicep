@@ -15,3 +15,15 @@ module rg './module/resources/resource-groups/main.bicep' = {
     tags: resourceParam.tags
   }
 }
+
+// Virtual-network
+module virtualnetwork 'modules/network/virtual-networks/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName)
+  name: resourceParam.virtualNetwork
+  params: {
+    location: location
+    name: resourceParam.virtualNetwork
+    tags: resourceParam.tags
+    addressPrefixes:['10.7.0.0/16']
+  }
+}
