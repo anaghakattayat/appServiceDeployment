@@ -32,6 +32,7 @@ jobs:
         inlineScript: |
           pwd
           cd../
+          pwd
           az bicep build --file ./main.bicep
         
     # Validate whether a template is valid at subscription scope
