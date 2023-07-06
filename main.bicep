@@ -64,6 +64,6 @@ module slots 'module/web/sites/slots/main.bicep' = {
     appName: resourceParam.slotWebAppName
     kind: 'app'
     name: resourceParam.slotWebAppName
-    location: resourceParam.location
+    location: location
   }
 }
