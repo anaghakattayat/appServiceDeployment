@@ -33,7 +33,7 @@ jobs:
           pwd
           az config set bicep.use_binary_from_path=False
           az bicep install
-          az bicep build --file "../../../main.bicep"
+          az bicep build --file "main.bicep"
         
     # Validate whether a template is valid at subscription scope
     - name: Bicep Validate
