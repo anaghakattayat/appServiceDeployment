@@ -37,7 +37,7 @@ module serverfarms 'module/web/serverfarms/main.bicep' = {
     location: location
     name: resourceParam.planName
     tags: resourceParam.tags
-    sku: resourceParam.sku
+    //sku: resourceParam.sku
   // dependsOn: [
   //   rg.outputs.name
   // ]
