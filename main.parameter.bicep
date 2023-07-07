@@ -7,6 +7,7 @@ param planName string = 'ameth-appServicePlan-1'
 param webAppName string = 'ameth-webApp-1'
 param virtualNetwork string = 'Ameth-virtual-network-1'
 param slotWebAppName string = 'slot-WebAppName-1'
+param logAnalyticsWorkspace string = 'loganalyticsws1'
 param sku object = {
   name: 'S1'
   tier: 'S1'
@@ -18,6 +19,7 @@ var resourceParam = {
   webAppName: webAppName
   virtualNetwork: virtualNetwork
   slotWebAppName : slotWebAppName
+logAnalyticsWorkspace : logAnalyticsWorkspace
   sku: sku
   tags: {
     testtag: 'testtag1'
