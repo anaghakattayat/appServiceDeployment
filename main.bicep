@@ -78,7 +78,7 @@ module operationalInsights 'module/operational-insights/workspaces/main.bicep' =
   }
 }
 
-module appInsights 'modules/insights/components/main.bicep' ={
+module appInsights 'module/insights/components/main.bicep' ={
   scope: resourceGroup(resourceParam.AppRgName) 
   name:  resourceParam.appInsights
   params: {
