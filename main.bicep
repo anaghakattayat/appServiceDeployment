@@ -74,5 +74,16 @@ module operationalInsights 'module/operational-insights/workspaces/main.bicep' =
   params: {
     name: resourceParam.logAnalyticsWorkspace
     location: location
+    dataRetention: resourceParam.retentionInDays
+  }
+}
+
+module appInsights 'modules/insights/components/main.bicep' ={
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name:  resourceParam.appInsights
+  params: {
+    name: resourceParam.appInsights
+    location: location
+    workspaceResourceId : operationalInsights.outputs.resourceId
   }
 }
