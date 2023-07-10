@@ -61,8 +61,8 @@ module appInsights 'module/insights/components/main.bicep' ={
 //    dependsOn: [
 //   //   rg.outputs.name
 //   // ]
-// }
-// }
+ }
+ }
 
  //App service 
  module sites 'module/web/sites/main.bicep'= {
