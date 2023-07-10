@@ -29,45 +29,6 @@ param resourceParam object
 // }
 
 
-// //App service plan
-// module serverfarms 'module/web/serverfarms/main.bicep' = {
-//   scope: resourceGroup(resourceParam.AppRgName)
-//   name: resourceParam.planName
-//   params: {
-//     location: location
-//     name: resourceParam.planName
-//     tags: resourceParam.tags
-//     sku: resourceParam.sku
-//   // dependsOn: [
-//   //   rg.outputs.name
-//   // ]
-// }
-// }
-
-// //App service 
-// module sites 'module/web/sites/main.bicep'= {
-//    scope: resourceGroup(resourceParam.AppRgName) 
-//    name : resourceParam.webAppName
-//    params: {
-//     location: location
-//     name: resourceParam.webAppName
-//     serverFarmResourceId: serverfarms.outputs.resourceId
-//     kind: 'app'
-//    }
-// }
-
-// // slot
-// module slots 'module/web/sites/slots/main.bicep' = {
-//   scope: resourceGroup(resourceParam.AppRgName) 
-//   name:  resourceParam.slotWebAppName
-//   params: {
-//     appName: resourceParam.webAppName
-//     kind: 'app'
-//     name: resourceParam.slotWebAppName
-//     location: location
-//   }
-// }
-
 module operationalInsights 'module/operational-insights/workspaces/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName) 
   name:  resourceParam.logAnalyticsWorkspace
@@ -87,3 +48,47 @@ module appInsights 'module/insights/components/main.bicep' ={
     workspaceResourceId : operationalInsights.outputs.resourceId
   }
 }
+
+ //App service plan
+ module serverfarms 'module/web/serverfarms/main.bicep' = {
+ scope: resourceGroup(resourceParam.AppRgName)
+ name: resourceParam.planName
+ params: {
+   location: location
+   name: resourceParam.planName
+   tags: resourceParam.tags
+   sku: resourceParam.sku
+//    dependsOn: [
+//   //   rg.outputs.name
+//   // ]
+// }
+// }
+
+ //App service 
+ module sites 'module/web/sites/main.bicep'= {
+ scope: resourceGroup(resourceParam.AppRgName) 
+ name : resourceParam.webAppName
+ params: {
+   location: location
+   name: resourceParam.webAppName
+   serverFarmResourceId: serverfarms.outputs.resourceId
+   appInsightResourceId: operationalInsights.outputs.resourceId
+   kind: 'app'
+   }
+ }
+
+ // slot
+ module slots 'module/web/sites/slots/main.bicep' = {
+ scope: resourceGroup(resourceParam.AppRgName) 
+ name:  resourceParam.slotWebAppName
+ params: {
+   appName: resourceParam.webAppName
+   kind: 'app'
+   name: resourceParam.slotWebAppName
+   location: location
+   }
+ }
+
+
+
+
