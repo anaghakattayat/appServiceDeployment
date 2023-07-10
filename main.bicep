@@ -51,13 +51,13 @@ module appInsights 'module/insights/components/main.bicep' ={
 
  //App service plan
  module serverfarms 'module/web/serverfarms/main.bicep' = {
- scope: resourceGroup(resourceParam.AppRgName)
- name: resourceParam.planName
- params: {
-   location: location
-   name: resourceParam.planName
-   tags: resourceParam.tags
-   sku: resourceParam.sku
+  scope: resourceGroup(resourceParam.AppRgName)
+  name: resourceParam.planName
+  params: {
+    location: location
+    name: resourceParam.planName
+    tags: resourceParam.tags
+    sku: resourceParam.sku
 //    dependsOn: [
 //   //   rg.outputs.name
 //   // ]
@@ -66,14 +66,14 @@ module appInsights 'module/insights/components/main.bicep' ={
 
  //App service 
  module sites 'module/web/sites/main.bicep'= {
- scope: resourceGroup(resourceParam.AppRgName) 
- name : resourceParam.webAppName
- params: {
-   location: location
-   name: resourceParam.webAppName
-   serverFarmResourceId: serverfarms.outputs.resourceId
-   appInsightResourceId: operationalInsights.outputs.resourceId
-   kind: 'app'
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name : resourceParam.webAppName
+  params: {
+    location: location
+    name: resourceParam.webAppName
+    serverFarmResourceId: serverfarms.outputs.resourceId
+    appInsightResourceId: operationalInsights.outputs.resourceId
+    kind: 'app'
    }
  }
 
