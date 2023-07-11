@@ -28,27 +28,6 @@ param resourceParam object
 //   }
 // }
 
-
-module operationalInsights 'module/operational-insights/workspaces/main.bicep' = {
-  scope: resourceGroup(resourceParam.AppRgName) 
-  name:  resourceParam.logAnalyticsWorkspace
-  params: {
-    name: resourceParam.logAnalyticsWorkspace
-    location: location
-    dataRetention: resourceParam.retentionInDays
-  }
-}
-
-module appInsights 'module/insights/components/main.bicep' ={
-  scope: resourceGroup(resourceParam.AppRgName) 
-  name:  resourceParam.appInsights
-  params: {
-    name: resourceParam.appInsights
-    location: location
-    workspaceResourceId : operationalInsights.outputs.resourceId
-  }
-}
-
  //App service plan
  module serverfarms 'module/web/serverfarms/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName)
@@ -89,6 +68,47 @@ module appInsights 'module/insights/components/main.bicep' ={
    }
  }
 
+//log Analytics Workspace
 
+module operationalInsights 'module/operational-insights/workspaces/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name:  resourceParam.logAnalyticsWorkspace
+  params: {
+    name: resourceParam.logAnalyticsWorkspace
+    location: location
+    dataRetention: resourceParam.retentionInDays
+  }
+}
+
+//app insights
+
+module appInsights 'module/insights/components/main.bicep' ={
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name:  resourceParam.appInsights
+  params: {
+    name: resourceParam.appInsights
+    location: location
+    workspaceResourceId : operationalInsights.outputs.resourceId
+  }
+}
+
+//App service  - app settings
+
+module sitesConfig 'module/web/sites/config--appsettings/main.bicep'= {
+  scope: resourceGroup(resourceParam.AppRgName) 
+  name : resourceParam.appSettings
+  //parent: sites.name
+  params: {
+   kind: 'app'
+   appName: resourceParam.webAppName
+   appSettingsKeyValuePairs:  {
+      name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
+      value: appInsights.outputs.instrumentationKey
+    }   
+  }  
+  dependsOn: [
+    sites
+  ]
+}
 
 
