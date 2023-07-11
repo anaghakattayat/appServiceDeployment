@@ -10,6 +10,7 @@ param slotWebAppName string = 'slot-WebAppName-1'
 param logAnalyticsWorkspace string = 'loganalyticsws1'
 param retentionInDays int = 30
 param appInsights string = 'appInsights1'
+param appSettings string = 'appSettings1'
 param sku object = {
   name: 'S1'
   tier: 'S1'
@@ -24,6 +25,7 @@ var resourceParam = {
   logAnalyticsWorkspace : logAnalyticsWorkspace
   retentionInDays : retentionInDays
   appInsights : appInsights
+  appSettings : appSettings
   sku: sku
   tags: {
     testtag: 'testtag1'
