@@ -7,26 +7,26 @@ param location string
 param resourceParam object
 
 // Resource Group
-// module rg './module/resources/resource-groups/main.bicep' = {
-//   name: '${deployment().name}-rg'
-//   params: {
-//     name: resourceParam.AppRgName
-//     location: location
-//     tags: resourceParam.tags
-//   }
-// }
+module rg './module/resources/resource-groups/main.bicep' = {
+  name: '${deployment().name}-rg'
+  params: {
+    name: resourceParam.AppRgName
+    location: location
+    tags: resourceParam.tags
+  }
+}
 
-// // Virtual-network
-// module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
-//   scope: resourceGroup(resourceParam.AppRgName)
-//   name: resourceParam.virtualNetwork
-//   params: {
-//     location: location
-//     name: resourceParam.virtualNetwork
-//     tags: resourceParam.tags
-//     addressPrefixes:['10.7.0.0/16']
-//   }
-// }
+// Virtual-network
+module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName)
+  name: resourceParam.virtualNetwork
+  params: {
+    location: location
+    name: resourceParam.virtualNetwork
+    tags: resourceParam.tags
+    addressPrefixes:['10.7.0.0/16']
+  }
+}
 
  //App service plan
  module serverfarms 'module/web/serverfarms/main.bicep' = {
