@@ -37,10 +37,10 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
     name: resourceParam.planName
     tags: resourceParam.tags
     sku: resourceParam.sku
+    }
     dependsOn: [
     rg
    ]
- }
  }
 
  //App service 
