@@ -111,3 +111,15 @@ module sitesConfig 'module/web/sites/config--appsettings/main.bicep'= {
 }
 
 
+//key vault 
+
+module keyvault 'modules/key-vault/vaults/main.bicep' = {
+  scope: resourceGroup(resourceParam.AppRgName)   
+  name: resourceParam.keyVault
+  params: {
+   name: resourceParam.keyVault
+   location: location
+  }
+}
+
+
