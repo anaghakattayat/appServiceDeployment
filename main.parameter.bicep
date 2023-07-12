@@ -11,7 +11,7 @@ param logAnalyticsWorkspace string = 'loganalyticsws2'
 param retentionInDays int = 30
 param appInsights string = 'appInsights2'
 param appSettings string = 'appSettings2'
-param keyVault string = 'keyVault1'
+param keyVault string = 'keyVaultameth1'
 
 param sku object = {
   name: 'S1'
