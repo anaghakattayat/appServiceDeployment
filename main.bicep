@@ -7,14 +7,14 @@ param location string
 param resourceParam object
 
 // Resource Group
-// module rg './module/resources/resource-groups/main.bicep' = {
-//   name: '${deployment().name}-rg'
-//   params: {
-//     name: resourceParam.AppRgName
-//     location: location
-//     tags: resourceParam.tags
-//   }
-// }
+module rg './module/resources/resource-groups/main.bicep' = {
+  name: '${deployment().name}-rg'
+  params: {
+    name: resourceParam.AppRgName
+    location: location
+    tags: resourceParam.tags
+  }
+}
 
 // Virtual-network
 module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
@@ -37,9 +37,9 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
     name: resourceParam.planName
     tags: resourceParam.tags
     sku: resourceParam.sku
-//    dependsOn: [
-//   //   rg.outputs.name
-//   // ]
+    dependsOn: [
+    rg
+   ]
  }
  }
 
@@ -54,6 +54,9 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
     appInsightResourceId: operationalInsights.outputs.resourceId
     kind: 'app'
    }
+    dependsOn: [
+    serverfarms
+   ]
  }
 
  // slot
@@ -66,6 +69,9 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
    name: resourceParam.slotWebAppName
    location: location
    }
+      dependsOn: [
+      sites
+   ]
  }
 
 //log Analytics Workspace
@@ -78,6 +84,7 @@ module operationalInsights 'module/operational-insights/workspaces/main.bicep' =
     location: location
     dataRetention: resourceParam.retentionInDays
   }
+  
 }
 
 //app insights
@@ -90,6 +97,9 @@ module appInsights 'module/insights/components/main.bicep' ={
     location: location
     workspaceResourceId : operationalInsights.outputs.resourceId
   }
+    dependsOn: [
+    operationalInsights
+  ]
 }
 
 //App service  - app settings
@@ -110,7 +120,6 @@ module sitesConfig 'module/web/sites/config--appsettings/main.bicep'= {
   ]
 }
 
-
 //key vault 
 
 module keyvault 'module/key-vault/vaults/main.bicep' = {
@@ -121,5 +130,4 @@ module keyvault 'module/key-vault/vaults/main.bicep' = {
    location: location
   }
 }
-
 
