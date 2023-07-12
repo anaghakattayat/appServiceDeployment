@@ -7,14 +7,14 @@ param location string
 param resourceParam object
 
 // Resource Group
-module rg './module/resources/resource-groups/main.bicep' = {
-  name: '${deployment().name}-rg'
-  params: {
-    name: resourceParam.AppRgName
-    location: location
-    tags: resourceParam.tags
-  }
-}
+// module rg './module/resources/resource-groups/main.bicep' = {
+//   name: '${deployment().name}-rg'
+//   params: {
+//     name: resourceParam.AppRgName
+//     location: location
+//     tags: resourceParam.tags
+//   }
+// }
 
 // Virtual-network
 module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
