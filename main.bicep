@@ -112,9 +112,10 @@ module sitesConfig 'module/web/sites/config--appsettings/main.bicep'= {
   params: {
    kind: 'app'
    appName: resourceParam.webAppName
+   appInsightResourceId :appInsights.outputs.resourceId
    appSettingsKeyValuePairs:  {
    APPINSIGHTS_INSTRUMENTATIONKEY: appInsights.outputs.instrumentationKey
-   APPLICATIONINSIGHTS_CONNECTION_STRING : appInsights.outputs.applicationId
+   APPLICATIONINSIGHTS_CONNECTION_STRING : appInsights.outputs.connectionString
     }   
   }  
   dependsOn: [
