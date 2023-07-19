@@ -56,6 +56,7 @@ module virtualnetwork 'module/network/virtual-networks/main.bicep' = {
    }
     dependsOn: [
     serverfarms
+    rg
    ]
  }
 
