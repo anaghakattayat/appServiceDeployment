@@ -13,10 +13,35 @@ param appInsights string = 'appInsights2'
 param appSettings string = 'appSettings2'
 param keyVault string = 'keyVaultameth1'
 
+
 param sku object = {
   name: 'S1'
   tier: 'S1'
 }
+
+
+param policy array = [
+  {
+    objectId: ''
+    tenantId: ''
+    permissions: {
+      keys: [
+        'Get'
+        'List'
+        'Update'
+      ]
+      secrets: [
+        'Get'
+        'List'
+      ]
+      certificates: [
+        'Get'
+        'List'
+      ]
+    }
+    applicationId: null
+  }
+]  
 
 var resourceParam = {
   AppRgName: AppRgName
@@ -30,6 +55,7 @@ var resourceParam = {
   appSettings : appSettings
   keyVault : keyVault
   sku: sku
+  policy : policy
   tags: {
     testtag: 'testtag1'
   }
