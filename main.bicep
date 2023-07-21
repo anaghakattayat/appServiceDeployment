@@ -163,6 +163,9 @@ module keyvaultPolicy 'module/key-vault/vaults/access-policies/main.bicep' = {
        }  
    ] 
   }
+  dependsOn: [
+    keyvault
+  ]
 }
 
 
