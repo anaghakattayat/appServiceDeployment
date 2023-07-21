@@ -136,14 +136,33 @@ module keyvault 'module/key-vault/vaults/main.bicep' = {
 
 //access policy
 
-module keyvaultPolicy 'module/key-vault/vaults/access-policies/main.bicep' = {
+module keyvaultPolicy 'modules/key-vault/vaults/access-policies/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName)   
   name: resourceParam.keyVaultPolicy
+  
   params: {
    keyVaultName: resourceParam.keyvault
-   accessPolicies: resourceParam.policy  
+   accessPolicies: [
+       {
+      tenantId: subscription().tenantId
+      applicationId: null // Optional
+      objectId: sites.outputs.systemAssignedPrincipalId
+      permissions: {
+               certificates: [   
+                   'All'   
+               ]  
+               keys: [
+   
+                   'All' 
+               ]  
+               secrets: [
+   
+                   'All'  
+               ]  
+           }   
+       }  
+   ] 
   }
 }
-
 
 
