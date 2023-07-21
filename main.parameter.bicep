@@ -31,7 +31,6 @@ var resourceParam = {
   appSettings : appSettings
   keyVault : keyVault
   sku: sku
-  policy : policy
   tags: {
     testtag: 'testtag1'
   }
