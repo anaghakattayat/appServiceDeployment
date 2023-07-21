@@ -19,30 +19,6 @@ param sku object = {
   tier: 'S1'
 }
 
-
-param policy array = [
-  {
-    objectId: ''
-    tenantId: ''
-    permissions: {
-      keys: [
-        'Get'
-        'List'
-        'Update'
-      ]
-      secrets: [
-        'Get'
-        'List'
-      ]
-      certificates: [
-        'Get'
-        'List'
-      ]
-    }
-    applicationId: null
-  }
-]  
-
 var resourceParam = {
   AppRgName: AppRgName
   planName: planName
