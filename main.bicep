@@ -136,7 +136,7 @@ module keyvault 'module/key-vault/vaults/main.bicep' = {
 
 //access policy
 
-module keyvaultPolicy 'modules/key-vault/vaults/access-policies/main.bicep' = {
+module keyvaultPolicy 'module/key-vault/vaults/access-policies/main.bicep' = {
   scope: resourceGroup(resourceParam.AppRgName)   
   name: resourceParam.keyVaultPolicy
   
