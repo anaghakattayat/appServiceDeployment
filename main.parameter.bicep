@@ -12,7 +12,7 @@ param retentionInDays int = 30
 param appInsights string = 'appInsights2'
 param appSettings string = 'appSettings2'
 param keyVault string = 'keyVaultameth1'
-param keyVaultPolicy string = 'keyVaultPolicy1'
+//param keyVaultPolicy string = 'keyVaultPolicy1'
 
 
 param sku object = {
@@ -31,7 +31,7 @@ var resourceParam = {
   appInsights : appInsights
   appSettings : appSettings
   keyVault : keyVault
-  keyVaultPolicy : keyVaultPolicy
+  //keyVaultPolicy : keyVaultPolicy
   sku: sku
   tags: {
     testtag: 'testtag1'
