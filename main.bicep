@@ -16,7 +16,7 @@ module rg './module/resources/resource-groups/main.bicep' = {
   }
 }
 
-module storageAccount './modules/storage/storage-accounts/main.bicep' = {
+module storageAccount './module/storage/storage-accounts/main.bicep' = {
   scope: resourceGroup(resourceParam.sharedRgName)
   name: resourceParam.name
   params: {
