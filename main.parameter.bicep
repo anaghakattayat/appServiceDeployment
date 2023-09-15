@@ -12,6 +12,10 @@ param retentionInDays int = 30
 param appInsights string = 'appInsights2'
 param appSettings string = 'appSettings2'
 param keyVault string = 'keyVaultameth1'
+vparam storageAccountName string = 'storage0221'
+param kind string = 'StorageV2'
+param sku string = 'Standard_LRS'
+param blobServices string = 'testblob'
 //param keyVaultPolicy string = 'keyVaultPolicy1'
 
 
@@ -32,6 +36,10 @@ var resourceParam = {
   appSettings : appSettings
   keyVault : keyVault
   //keyVaultPolicy : keyVaultPolicy
+  storageAccountName: storageAccountName
+  kind: kind
+  sku: sku
+  blobServices: blobServices
   sku: sku
   tags: {
     testtag: 'testtag1'
